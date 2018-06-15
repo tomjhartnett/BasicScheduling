@@ -45,16 +45,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Event.cs" />
     <Compile Include="MainTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainTaskForm.Designer.cs">
       <DependentUpon>MainTaskForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RepeatedTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RepeatedTaskForm.Designer.cs">
+      <DependentUpon>RepeatedTaskForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task.cs" />
     <EmbeddedResource Include="MainTaskForm.resx">
       <DependentUpon>MainTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepeatedTaskForm.resx">
+      <DependentUpon>RepeatedTaskForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
