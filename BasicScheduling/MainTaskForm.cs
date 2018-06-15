@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BasicScheduling
 {
-    public partial class Form1 : Form
+    public partial class MainTaskForm : Form
     {
-        public Form1()
+        public MainTaskForm()
         {
             InitializeComponent();
         }
