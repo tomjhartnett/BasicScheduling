@@ -23,17 +23,44 @@ namespace BasicScheduling
         {
             InitializeComponent();
             form = Form;
+            taskNameBox.Focus();
+            taskNameBox.Text = "Go shopping today";
+            taskNameBox.SelectAll();
         }
 
         private void addTaskButton_Click(object sender, EventArgs e)
         {
-            List<Event> days = new List<Event>();
-            days.Add(new Event(Day.Friday));
+            addTask();
+        }
 
-            form.addTask(new Task("test", days));
-            form.redrawTasks();
+        private void RepeatedTaskForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                addTask();
+            }
+        }
 
-            Close();
+        private void addTask()
+        {
+            if (taskNameBox.Text.Length > 0)
+            {
+                List<Event> days = new List<Event>();
+                days.Add(new Event(Day.Friday));
+
+                form.addTask(new Task(taskNameBox.Text, days));
+                form.redrawTasks();
+
+                Close();
+            }
+        }
+
+        private void taskNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                addTask();
+            }
         }
     }
 }
