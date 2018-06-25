@@ -36,9 +36,7 @@ namespace BasicScheduling
                 foreach (string s in tasks)
                     addTask(new Task(s));
             }catch(Exception ex)
-            {
-
-            }
+            {}
         }
 
         //when the button to add a repeated task is clicked
@@ -57,6 +55,7 @@ namespace BasicScheduling
         //redraws the panel for the tasks
         public void redrawTasks()
         {
+            writeToFile();
             taskPanel.Controls.Clear();
 
             Panel tempPanel;
@@ -81,9 +80,6 @@ namespace BasicScheduling
 
         private void MainTaskForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            bool canClose = writeToFile();
-            while (!canClose)
-                canClose = writeToFile();
         }
 
         private bool writeToFile()

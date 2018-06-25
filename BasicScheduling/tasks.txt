@@ -1,4 +1,3 @@
-daily github/lab publish
 go to discount tire
 clean room
 laundry
