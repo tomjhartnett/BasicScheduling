@@ -69,6 +69,7 @@
             this.Controls.Add(this.taskPanel);
             this.Controls.Add(this.titleLabel);
             this.Name = "MainTaskForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainTaskForm_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

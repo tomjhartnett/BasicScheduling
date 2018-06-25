@@ -26,6 +26,16 @@ namespace BasicScheduling
             daysToShow = DaysToShow;
         }
 
+        public Task(string WhatToDo)
+        {
+            whatToDo = WhatToDo;
+
+            List<Event> days = new List<Event>();
+            days.Add(new Event(Day.Friday));
+
+            daysToShow = days;
+        }
+
         public Panel getPanel(EventHandler redraw)
         {
             Panel tempPanel = new Panel();

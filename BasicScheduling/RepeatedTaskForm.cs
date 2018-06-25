@@ -45,10 +45,7 @@ namespace BasicScheduling
         {
             if (taskNameBox.Text.Length > 0)
             {
-                List<Event> days = new List<Event>();
-                days.Add(new Event(Day.Friday));
-
-                form.addTask(new Task(taskNameBox.Text, days));
+                form.addTask(new Task(taskNameBox.Text));
                 form.redrawTasks();
 
                 Close();

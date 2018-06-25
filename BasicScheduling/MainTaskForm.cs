@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,27 @@ namespace BasicScheduling
     {
         //list of tasks to do
         private List<Task> tasksToDo = new List<Task>();
+        //task save path
+        private string path = @"..\\..\\tasks.txt";
 
         public MainTaskForm()
         {
             InitializeComponent();
+            loadTasks();
             redrawTasks();
+        }
+
+        private void loadTasks()
+        {
+            try
+            {
+                string[] tasks = File.ReadAllLines(path);
+                foreach (string s in tasks)
+                    addTask(new Task(s));
+            }catch(Exception ex)
+            {
+
+            }
         }
 
         //when the button to add a repeated task is clicked
@@ -60,6 +77,30 @@ namespace BasicScheduling
         private void taskButton_Click(object sender, EventArgs e)
         {
             redrawTasks();
+        }
+
+        private void MainTaskForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            bool canClose = writeToFile();
+            while (!canClose)
+                canClose = writeToFile();
+        }
+
+        private bool writeToFile()
+        {
+            File.WriteAllLines(path, getTaskText());
+            return true;
+        }
+
+        private string[] getTaskText()
+        {
+            List<string> ret = new List<string>();
+
+            foreach (Task t in tasksToDo)
+                if(!t.isFinished)
+                    ret.Add(t.whatToDo);
+
+            return ret.ToArray();
         }
     }
 }
