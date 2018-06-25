@@ -18,25 +18,12 @@ namespace BasicScheduling
     {
         //list of tasks to do
         private List<Task> tasksToDo = new List<Task>();
-        //task save path
-        private string path = @"..\\..\\tasks.txt";
 
         public MainTaskForm()
         {
             InitializeComponent();
-            loadTasks();
+            addTasks(FileHandler.loadTasks());
             redrawTasks();
-        }
-
-        private void loadTasks()
-        {
-            try
-            {
-                string[] tasks = File.ReadAllLines(path);
-                foreach (string s in tasks)
-                    addTask(new Task(s));
-            }catch(Exception ex)
-            {}
         }
 
         //when the button to add a repeated task is clicked
@@ -52,10 +39,16 @@ namespace BasicScheduling
             redrawTasks();
         }
 
+        public void addTasks(List<Task> tasks)
+        {
+            foreach (Task t in tasks)
+                addTask(t);
+        }
+
         //redraws the panel for the tasks
         public void redrawTasks()
         {
-            writeToFile();
+            FileHandler.writeToFile(getTaskText());
             taskPanel.Controls.Clear();
 
             Panel tempPanel;
@@ -76,16 +69,6 @@ namespace BasicScheduling
         private void taskButton_Click(object sender, EventArgs e)
         {
             redrawTasks();
-        }
-
-        private void MainTaskForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        }
-
-        private bool writeToFile()
-        {
-            File.WriteAllLines(path, getTaskText());
-            return true;
         }
 
         private string[] getTaskText()

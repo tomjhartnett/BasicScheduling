@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Event.cs" />
+    <Compile Include="FileHandler.cs" />
     <Compile Include="MainTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
