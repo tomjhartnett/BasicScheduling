@@ -39,6 +39,7 @@ namespace BasicScheduling
         public Panel getPanel(EventHandler redraw)
         {
             Panel tempPanel = new Panel();
+            tempPanel.Size = new System.Drawing.Size(0, 0);
             tempPanel.AutoSize = true;
 
             Label titleLabel = new Label();
@@ -48,14 +49,13 @@ namespace BasicScheduling
 
             Button completeButton = new Button();
             completeButton.AutoSize = true;
-            completeButton.Height = titleLabel.Height;
             completeButton.Text = "Complete Task";
             completeButton.Click += CompleteButton_Click;
             //make sure to trigger redraw in main form
             completeButton.Click += redraw;
             completeButton.Location = new System.Drawing.Point(titleLabel.Location.X + titleLabel.Width, 0);
             tempPanel.Controls.Add(completeButton);
-
+            
             return tempPanel;
         }
 
